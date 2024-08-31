@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    /*Selector universal */
+
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+/* 
+
+*/
+html{
+    font-size: 14px;
+
+}
+body {
+    font-family: "open sans", sans-serif;
+    background-color: hsl(217, 28%, 15%);
+    color: hsl(0, 0%, 100%);
+}
+a{
+    color: inherit;
+    text-decoration:none;
+}
+
+img{
+    /* todo: rdw para imagenes*/
+    max-width: 100%;
+    height: auto;
+
+}
+
+/* Utils*/
+
+.hidden{
+    display: none;
+}
+.wrapper{
+    /*width: 1000px;*/ /*asigna el maximo de 1000px el ancho de la pagina, pero no se adapta en dispositivos moviles donde la pantalla es menos ancha*/
+    /*Adaptar el ancho para dispositivos moviles*/
+    width: min(100% - 3rem, 1440px); /*el 100% ajusta la pantalla cuando se reduce la ventana, y el 1440 lo toma como el maximo posible al expandir la ventana*/
+    /* 100% - 3rem, pone margenes de 42px a los lados del nav (3 * 14 = 42px)*/
+    
+}
+
+/* header section */
+
+.header{
+    
+    display: flex; /*coloca los elementos al lado del otro*/
+    justify-content: space-between; /* genera espacio entre los items logo y nav, el navegagor lo hace automatico*/
+    align-items: center; /* alinea los elementos a la misma altura*/
+    margin: 0 auto;
+    margin-top: 3rem; /* coloca margen solo en la parte superior 3rem = 3 * 14px de la clase html {}*/ 
+
+}
+.header__nav{
+    display: flex;
+    gap: 3rem;
+}
+
+/*hero section*/
+
+.hero{
+    /*border: 3px solid red;*/
+    display: flex; /* los coloca uno al lado del otro*/
+    flex-direction: column; /* los coloca uno debajo de otro invierte el flex*/
+    align-items: center;
+    gap: 2rem;
+
+    padding-top: 3rem;
+    padding-bottom: 12rem;
+    background-image: url(../images/bg-curvy-desktop.svg);/*llamamos una imagen*/
+    background-repeat: no-repeat;/*hacemos q no se repita*/
+    background-position: bottom;/*la mandamos hacia abajo*/
+    background-size: contain; /*hacemos q no se pierda o distorcione*/
+}
+@media (max-width: 768px){
+.hero{
+    background-image:  url(../images/bg-curvy-mobile.svg);
+}
+
+}
+
+.hero__title{
+    
+    
+    /*width: 720px;*/
+    width: min(100% - 3rem, 720px);
+    font-family: "Raleway", system-ui;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+
+}
+
+.hero__text{
+    /*border: 3px solid yellow;*/
+    font-family: "Open Sans", sans-serif;
+    width: min(100% - 3rem, 720px);
+    
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+
+}
+
+
+.hero__button{
+    font-family: "Raleway", system-ui;
+    color: white;
+    font-weight: 700;
+    border:none;
+    border-radius: 7rem;
+    padding: 1rem 1.5rem;
+    min-width: 220px;
+    background: linear-gradient(90deg,
+    hsl(176, 68%, 64%) 0%, 
+    hsl(198, 60%, 50%) 100%);
+    transition: all ls easy;
+
+}
+
+.hero__button:hover{
+    background: linear-gradient(90deg,
+    hsl(176, 68%, 64%) 35%, 
+    hsl(198, 60%, 50%) 100%);
+}
+
+/* FEATURES SECTIONS*/
+.features{ /*colocamos la letra en el features padre, para que lo aplique en los feature hijos*/
+
+    font-family: "raleway", system-ui;
+    text-align: center;
+    background-color: hsl(218, 28%, 13%);
+
+    display:grid; /*lo contrario a flex*/
+    /*grid-template-columns: auto auto; crea la medida automatica*/
+    grid-template-columns: 340px; /*1 columna, configuracion para dispositivos moviles y cuando cambia el dispositivo,se aplica @media para pcs y laptop*/
+    justify-content: center;
+    gap: 5rem;
+    
+    
+}
+
+@media (min-width: 992px){ /*se aplica para dispositivos como laptops y pcs*/
+    .features{
+        grid-template-columns: 340px 340px; /*genera 2 columnas para los features*/
+        justify-content: center;
+    }
+
+}
+.feature{
+
+    display: flex; /* colocamos los items en linea*/
+    flex-direction: column; /* cambia la orientacion de linea en columna*/
+    align-items: center; /*centra los items dentreo de la caja contenedora*/
+    gap:1rem; /* 16px*/
+
+}
+
+.feature__image{
+    height:68px; /*aplicamos centrado a las imagenes*/
+}
+
+.feature__title{
+    
+    
+}
+
+.feature__text{
+    
+}
+/* COLLABORATION SECTION para la casa*/
+
+.collaboration{
+    /*border: 3px solid red;*/
+    display: flex; /*coloca los elementos uno al lado del otro*/
+    flex-direction: column;
+    align-items: center; /*alinea los 2 items al mismo nivel uno al lado del otro*/
+    justify-content: center; /* alineamos el contenido*/
+    gap: 4rem; /* 4rem = 4 x 16px = 64px*/
+
+    background-color: hsl(218, 28%, 13%); /*color de fondo*/
+
+    padding-top: 8rem;
+
+}
+
+@media (min-width: 1200px){ /*se aplica para dispositivos como laptops y pcs*/
+    .collaboration{
+       flex-direction: row;
+    }
+}
+.collaboration_image{
+    /*border: 3px solid blue;*/
+
+}
+
+.how_works{
+    display: flex; /*coloca los elementos uno al lado del otro*/
+    flex-direction: column; /*coloca los elementos en columna*/
+    gap: 1rem;
+    /*margin-bottom: 30rem;*/
+
+    width: min(100% - 3rem, 480px); /*asigna un ancho minimo para la web al ampliar el navegador, asignando 3rem de margen a los lados*/
+
+}
+
+.how_works__title{
+    font-family: "Raleway", system-ui;
+    font-weight: 700;
+    font-size: 2.8rem;   
+
+}
+
+.how_works__text{
+    font-family: "Open sans", sans-serif;
+
+}
+
+.how_works__button{
+    color: hsl(176, 68%, 64%);
+    display: flex;/* colocamos los elementos uno al lado del otro*/
+    align-items: center; /*centramos los elementos*/
+    gap: 0.5rem; /*asignamos separacion de 8px*/
+
+    border-bottom: 1px solid hsl(176, 68%, 64%); /*asignamos color al boton*/
+
+    width: 10.8rem; /*asignamos el ancho del boton*/
+    padding-bottom: 0.5rem; /*agisnamos la separacion*/
+
+}
+/* TESTIMONIALS*/
+
+.testimonials{
+    background-color: hsl(218, 28%, 13%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 8rem;
+    padding-bottom: 10rem;
+
+}
+@media (min-width: 1200px){ /*se aplica para dispositivos como laptops y pcs*/
+    .testimonials{
+       flex-direction: row;
+    }
+}
+
+.testimonial{
+width: 322px;
+
+/*padding: top right bottom left; */
+
+padding: 2rem 1.5rem 1.5rem 1.5rem;
+border-radius: 0.5rem;
+border: 7px solid hsl(219, 30%, 18%, 0.8);
+background-color: hsl(219, 30%, 18%);
+/*position: relative;  hace que la posicion sea relativa*/
+
+}
+
+.testimonial--quote .testimonial__quote {
+   /* position: absolute; /*coloca la imagen en la parte superior izquierda*/
+   /* top: -10px; /*mueve la imagen hacia arriba en eje x*/
+   /* left: -10px; /*mueve la imagen hacia arriba en eje y*/
+  }
+
+.testimonial__text{
+margin-bottom: 2rem;
+line-height: 1.5rem; /*separacion del lineado*/
+
+}
+
+.testimonial__profile img{
+border-radius: 60px;
+
+}
+.testimonial__profile h4{
+    font-weight: 700;
+
+}
+
+.testimonial__profile{
+    display: flex;
+    gap: .5rem;
+  
+    font-size: .9rem;
+
+}
+
+.testimonial__profile h5{
+    font-weight: 400;
+        
+}
+
+
+
+/* EARLY ACCESS SECTION*/
+
+.early_access {
+    /*border:3px solid red;*/
+
+    width: min(100% - 3rem, 720px);
+    position: absolute; /*le indicamos q su guia es el inicio del footer*/
+    top: 0;
+    left: 50%; /*mueve a la izquierda a la mitad de la pagina*/
+    transform: translate(-50%, -50%); /*coloca el early accesss en el centro de la pagina*/
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /*separacion de textos lineales*/
+
+    /*shadow*/
+    background-color: hsl(219, 30%, 18%);
+    border-radius: 1rem;
+    box-shadow: 3px 3px 10px #111; /*añade sombra a la caja early access*/
+
+}
+
+.early_access h2{
+    font-size: 2rem;
+    text-align: center;
+
+}
+
+.early_access p{
+
+    text-align: center;
+}
+.early_access form{
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+
+}
+
+.early_access input[type=text]{
+/*border: 3px solid red;*/
+border-radius: 1.5rem;
+border: 0;
+padding: 1rem, 2rem;
+width: min(100%, 30rem);
+
+
+}
+
+.early_access input[type=submit]{ /*asigna colores al boton*/ 
+    font-family: "Raleway", system-ui;
+    color: white;
+    font-weight: 700; /*ancho de la letra*/
+    border:none; /*quita el borde*/
+    border-radius: 7rem; /*le da contorno a la caja o boton*/
+    padding: 1rem 1.5rem; /*separacion a los lados*/ 
+    min-width: 220px;
+    background: linear-gradient(90deg,
+    hsl(176, 68%, 64%) 0%, 
+    hsl(198, 60%, 50%) 100%);
+    transition: all ls easy;
+
+}
+.early_access input[type=submit]:hover { /*le da estilo al poner el mouse encima del boton*/
+    background: linear-gradient(90deg,
+    hsl(176, 68%, 64%) 35%, 
+    hsl(198, 60%, 50%) 100%);
+}
+
+/* FOOTER SECTION*/
+
+.footer {
+    position: relative;
+    background-color: hsl(216, 53%, 9%);
+    padding: 15rem 0 5rem 0;
+    
+}
+
+.footer--wrapper{
+    display: flex; /*coloca los elementos uno al lado del otro*/
+    flex-direction: column; /*los coloca en columna*/
+    align-items: flex-start; /*los alinea*/
+
+/*    border: 3px solid red;*/
+    width: min(100% - 3rem, 76rem);
+    margin: 0 auto;/* margen 0 a los lados y auto*/
+
+}
+
+.footer-info{
+    display: flex;
+    gap: 4rem; /*separa los elementos 4rem*/
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+@media (min-width: 1200px){ /*se aplica para dispositivos como laptops y pcs*/
+    .footer-info{
+       flex-direction: row;
+    }
+}
+
+.footer-info__description{
+    width: 22rem;
+    display:flex;
+    align-items: flex-start;/*alinea en la parte superior*/
+    gap: 1.5rem;
+
+}
+
+.footer-info__contact{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+   
+}
+
+.footer-info__description span{
+    display: flex;
+    gap: 1.5rem;
+    
+}
+
+.footer-info__links{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+
+}
+
+.footer-info__social {
+    display: flex;
+    gap: 1.5rem;
+  }
+

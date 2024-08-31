@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400..700;1,300..800&display=swap');
+
+* {
+    /*Selector universal */
+
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+html {
+    /*está por encima del body*/
+    font-size: var(--font-size);
+    /*llamamos la variable que aplica el tamaño de letra*/
+    background-image: url(../images/bg-hero-desktop.svg);
+    background-color: var(--neutral-Very-Pale-Cyan);
+
+}
+main{
+    gap: 3rem;
+}
+
+:root {
+    /*está por encima del html*/
+    /* --mi-color: blue; /*variable se puede usar en cualquier parte del css con var(--mi-color)*/
+    /* --mi-color-2: red;*/
+    /*fonts o fuentes*/
+    --font-primary: "Popins";
+    --font-size: 18px;
+    --font-primary-weight-regular: 600;
+
+    --font-secondary: "Open Sans";
+    --font-size: 18px;
+    --font-secondary-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    /*definimos los colores que se usaran en los demas css*/
+
+    --Pink-primary: hsl(322, 100%, 66%);
+
+    --neutral-Very-Pale-Cyan: hsl(193, 100%, 96%);
+    --neutral-Very-Dark-Cyan: hsl(192, 100%, 9%);
+    --neutral-Grayish-Blue: hsl(208, 11%, 55%);
+
+
+}
+
+body {
+    /* background-color: var(--mi-color);
+    color: var(--mi-color-2);*/
+    /*hacemos el llamado de las variables que se aplican a los estilos*/
+    font-family: var(--font-primary);
+    /*llamamos a la variable fuente para que lo aplique en todo el body*/
+
+}
+
+.hidden{
+    display: none;
+}
+
+img{
+    /* todo: rdw para imagenes*/
+    max-width: 100%;
+    height: auto;
+
+}
+
+.wrapper{
+    /*width: 1000px;*/ /*asigna el maximo de 1000px el ancho de la pagina, pero no se adapta en dispositivos moviles donde la pantalla es menos ancha*/
+    /*Adaptar el ancho para dispositivos moviles*/
+    width: min(100% - 3rem, 1440px); /*el 100% ajusta la pantalla cuando se reduce la ventana, y el 1440 lo toma como el maximo posible al expandir la ventana*/
+    /* 100% - 3rem, pone margenes de 42px a los lados del nav (3 * 14 = 42px)*/
+    
+}
+
+/*HEADER*/
+
+.header{
+    
+    justify-content: space-between;
+    display: flex; /*coloca los elementos al lado del otro*/
+    
+    align-items: center; /* alinea los elementos a la misma altura*/
+    margin: 0 auto;
+    margin-top: 2rem; /* coloca margen solo en la parte superior 3rem = 3 * 14px de la clase html {}*/ 
+
+}
+.header__button{
+    /*border:3px solid blue;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    height: 26px;
+    width: 100px;
+    border-radius: 14px;
+    background-color: white;
+    box-shadow: 2px 2px 5px #272525;
+    
+}
+
+/*TITULO*/
+
+.titulo{
+    
+    display: flex; /*coloca los elementos uno al lado del otro*/
+    flex-direction: center;
+    align-items: center; /*alinea los 2 items al mismo nivel uno al lado del otro*/
+    justify-content: space-between; /* alineamos el contenido*/
+    gap: 1rem; /* 4rem = 4 x 16px = 64px*/
+    padding: 3rem;
+    
+    
+    
+}
+
+@media (min-width: 1200px){ /*se aplica para dispositivos como laptops y pcs*/
+    .titulo{
+       flex-direction: row; /*colocamos nuestras secciones una al aldo de la otra*/
+    }
+}
+
+.titulo__image{
+    width: min(100% - 3rem, 720px);
+    
+}
+.titulo_info{
+    display: flex; /*coloca los elementos uno al lado del otro*/
+    flex-direction: column; /*coloca los elementos en columna*/
+    gap: 1rem;
+    /*margin-bottom: 30rem;*/
+    background-color: transparent;
+
+    width: min(100% - 3rem, 720px); /*asigna un ancho minimo para la web al ampliar el navegador, asignando 3rem de margen a los lados*/
+
+}
+
+.titulo_info__title{
+    
+    font-weight: 700;
+    font-size: 36px;
+    font-family: var(--font-secondary);
+    
+
+}
+
+.titulo_info__text{
+    
+    font-family: var(--font-secondary);
+    font-size: 16px;
+
+}
+.boton__started{
+    
+    display: flex;/* colocamos los elementos uno al lado del otro*/
+    align-items: center; /*centramos los elementos*/
+    justify-content: center;;
+    border: 0;
+    border-radius: 32px;
+    width: 10.8rem; /*asignamos el ancho del boton*/
+    height: 50px;
+    width: 16rem;
+    background-color: var(--Pink-primary);
+    color: var(--neutral-Very-Pale-Cyan)
+   
+}
+
+/*FEATURE*/
+
+.features { /*colocamos la letra en el features padre, para que lo aplique en los feature hijos*/
+    
+    justify-content: space-between;
+    background-color: white;
+    font-family: var(--font-secondary);
+    display:flex; /*lo contrario a flex grid-template-columns: auto auto; crea la medida automatica*/
+    
+    flex-direction: column;
+      
+    gap: 4rem;
+    padding: 4rem;
+    
+        
+}
+
+@media (min-width: 1400px){ /*se aplica para dispositivos como laptops y pcs*/
+    .features{
+        flex-direction: row; /*colocamos nuestras secciones una al aldo de la otra*/
+        grid-template-columns: 220px; /*genera 2 columnas para los features*/
+        
+          
+    }
+
+}
+
+.feature{
+    /*border: 1px solid red; */
+    
+    border-radius: 7px;
+    display:flex;
+    align-items: center;
+    
+    padding: 2rem;
+    box-shadow: 0px 0px 14px rgb(196, 185, 185);
+    padding: 4rem;
+    
+}
+
+.feature__texto{
+    justify-content: space-between;
+    gap: 4rem;
+    
+    
+}
+.feature a{
+    border: 3px solid yellow;
+    gap: 5rem;
+}
+
+.feature__title{
+    font-size: 24px;
+
+}
+.feature__text{
+    
+    font-family: var(--font-secondary);
+    font-size: 16px;
+    color: var(--neutral-Grayish-Blue);
+    gap: 4rem;
+    
+    
+}
+
+.feature__image{
+    padding: 3rem;
+    display: flex;
+    width: min(100% - 3rem, 720px);
+    
+}
+
+/*PRE-FOOTER*/
+
+.early_access{
+    /*border: 2px solid blue;*/
+    font-family: var(--font-secondary);
+    width: min(100% - 3rem, 720px);
+    position: absolute; /*le indicamos q su guia es el inicio del footer*/
+    top: 20px;
+    left: 50%; /*mueve a la izquierda a la mitad de la pagina*/
+    transform: translate(-50%, -50%); /*coloca el early accesss en el centro de la pagina*/
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /*separacion de textos lineales*/
+    background-color: white;
+
+    border-radius: 7px;
+
+    box-shadow: 0px 0px 14px rgb(196, 185, 185);
+}
+
+.early_access__button{
+
+    font-family: var(--font-secondary-weight-regular);
+    color: var(--neutral-Very-Pale-Cyan);
+    font-weight: var(--font-weight-bold);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 45px;
+    border:0;
+
+    border-radius: 42px;
+    background-color: var(--Pink-primary);
+    
+}
+
+
+/*FOOTER*/
+
+.footer {
+    
+    position: relative;
+    background-color: var(--neutral-Very-Dark-Cyan);
+    padding: 4rem 0 3rem 0;
+    
+}
+
+.footer__info{
+    
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 6rem 0rem 6rem;
+    
+}
+.footer__info-contenido{
+
+    
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    font-family: var(--font-secondary);
+    color: var(--neutral-Very-Pale-Cyan);
+    font-size: 14px;
+    padding: 1rem 0rem 0rem 0rem;
+            
+}
+
+.footer__info-contenido-items{
+    
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    
+}
+
+.footer__info-items-separacion{
+    
+    display: flex;
+    align-self: flex-start;
+
+}
+
+.footer__info-contenido-items a{
+    
+    display: flex;
+    text-decoration: none;
+    color: var(--neutral-Very-Pale-Cyan);
+    
+}
+
+
+
+.footer__info-contenido-derechos{
+    display: flex;
+    justify-content: right;
+    color: var(--neutral-Very-Pale-Cyan);
+    font-family: var(--font-secondary);
+    font-size: 14px;
+}
+
