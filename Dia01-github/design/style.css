@@ -18,7 +18,7 @@ main{
 
     border:3px solid rgb(253, 253, 253);
     width: 650px;
-    min-height: 400px;
+    height: 400px;
     display:flex;
     border-radius: 14px;
     overflow: hidden;
@@ -35,10 +35,10 @@ main{
     border:5px solid rgb(248, 248, 248);
     width: 350px;
     background-color: hsl(0, 0%, 100%);
-    padding: 28px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 7px;
 }
 .contenido h4{
     margin: 0px;
