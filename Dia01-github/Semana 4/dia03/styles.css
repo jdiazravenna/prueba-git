@@ -1,8 +1,8 @@
 :root{
-    --bg-1: red;
-    --bg-2: blue;
-    --bg-3: green;
-    --bg-4: orange;
+    --bg-1: #7C93C3;
+    --bg-2: #55679C;
+    --bg-3: #1E2A5E;
+    --bg-4: #E1D7B7;
 }
 /*RESET*/
 
@@ -14,7 +14,7 @@
 body{
     height: 100vh;
     display: grid;
-    grid-template-columns: 300px 1fr 100px;
+    grid-template-columns: var(--sidebarwidth, 100px) 1fr var(--settingswidht, 0px);
     grid-template-rows: 60px 1fr;
 
     grid-template-areas:
@@ -22,6 +22,8 @@ body{
         "sidebar main sidebar2"
     ;
 }
+
+
 
 .header{
     background-color: var(--bg-1);
@@ -34,6 +36,10 @@ body{
 .sidebar{
     background-color: var(--bg-2);
     grid-area: sidebar;
+}
+
+body.has.(.sidebar--open){
+    --sidebarwidth: 300px;
 }
 .settings{
     background-color: var(--bg-2);
@@ -56,11 +62,13 @@ body{
 .card{
     background-color: var(--bg-4);
     border-radius: 0.5rem;
-    
+
+    display: grid;
+    place-content: center;    
 }
 
 .card:nth-child(1){
-    background-color: yellowgreen;
+    
     grid-area: card1;
 }
 .card:nth-child(2){
