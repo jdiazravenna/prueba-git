@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 :root{
     --font-primary: "Amatic SC", sans-serif;
     --font-weight: 700;
@@ -11,9 +15,10 @@ body{
     font-weight: var(--font-weight);
     font-size: var(--font-size);
     display: flex;
-    align-items: center;
     justify-content: center;
-    justify-items: center;
+    align-items: center;
+    
+    
 }
 
 
@@ -34,8 +39,6 @@ body{
 .hidden{
     display: none;
 }
-
-
 
 /*HEADER*/
 
@@ -110,7 +113,7 @@ body{
 .letra{
     /*border: 3px solid green;*/
     width: 2.5rem;
-    height: 2.5rem;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
