@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
+
+:root{
+    --font-primary: "Amatic SC", sans-serif;
+    --font-weight: 700;
+    --font-size: 28px;
+}
+body{
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight);
+    font-size: var(--font-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+
+.contenido{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../images/fondos-para-páginas-web-3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 500px;
+    height: 400px;
+    gap: 0.5rem;
+    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.75);
+}
+.hidden{
+    display: none;
+}
+
+
+
+/*HEADER*/
+
+.contenedor{
+    
+    padding: 0.5rem;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ 
+  
+}
+
+.cabecera{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    height: 80px;
+    margin: 0;
+    text-transform: capitalize;
+    color: white;
+   
+}
+
+
+
+
+.cabecera__button{
+    width: 90px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: white;
+    text-align:center;
+    overflow: none;
+    border-radius: 3rem;
+    border: 3px solid white;
+    font-size: 18px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 47%, rgba(255,255,255,1) 47%);
+
+}
+
+/*CUERPO*/
+
+.cuerpo{
+    
+    
+    display: grid;
+    
+    /* grid-template-columns: 5rem 5rem 5rem 5rem 5rem 5rem; */
+    /* grid-template-rows: 5rem 5rem 5rem 5rem; */
+  
+    grid-template-columns: repeat(7, 2.5rem);
+    grid-template-rows: repeat(2, 2.5rem);
+    justify-content: center;
+  
+    
+    grid-template-areas: 
+      ". letra1 letra2 letra3 letra4 letra5 letra6"
+      "letra7 letra8 letra9 letra10 letra11 letra12 letra13"
+    ;
+  
+    gap: 1rem;
+    padding-top: 1rem;
+  
+    position: relative;
+}
+
+.letra{
+    /*border: 3px solid green;*/
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: rgb(39, 93, 255);
+    border-radius: .5rem;    
+          
+}
+
+.letra:nth-child(1){
+    
+    grid-area: letra1;
+    position: absolute;
+    top: 0;
+    right: 2rem;
+}
+.letra:nth-child(2){
+    
+    grid-area: letra2;
+    position: absolute;
+    top: 0;
+    right: 2rem;
+}
+.letra:nth-child(3){
+    
+    grid-area: letra3;
+    position: absolute;
+    top: 0;
+    right: 2rem;
+}
+.letra:nth-child(4){
+    
+    grid-area: letra4;
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    opacity: 0.5;
+}
+.letra:nth-child(5){
+    
+    grid-area: letra5;
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    opacity: 0.5;
+}
+.letra:nth-child(6){
+    
+    grid-area: letra6;
+    position: absolute;
+    top: 0;
+    right: 2rem;
+}
+.letra:nth-child(7){
+    
+    grid-area: letra7;
+    opacity: 0.5;
+}
+.letra:nth-child(8){
+    
+    grid-area: letra8;
+}
+.letra:nth-child(9){
+    
+    grid-area: letra9;
+}
+.letra:nth-child(10){
+    
+    grid-area: letra10;
+    opacity: 0.5;
+}
+.letra:nth-child(11){
+    
+    grid-area: letra11;
+}
+.letra:nth-child(12){
+    
+    grid-area: letra12;
+}
+.letra:nth-child(13){
+    
+    grid-area: letra13;
+    opacity: 0.5;
+}
+
+/*FOOTER*/
+
+.foot{
+    display: grid;
+    
+    /* grid-template-columns: 5rem 5rem 5rem 5rem 5rem 5rem; */
+    /* grid-template-rows: 5rem 5rem 5rem 5rem; */
+  
+    grid-template-columns: repeat(9, 2rem);
+    grid-template-rows: repeat(3, 2rem);
+    justify-content: center;
+  
+    
+    grid-template-areas: 
+      "letra14 letra15 letra16 letra17 letra18 letra19 letra20 letra21 letra22"
+      "letra23 letra24 letra25 letra26 letra27 letra28 letra29 letra30 letra31"
+      "letra32 letra33 letra34 letra35 letra36 letra37 letra38 letra39 ."
+    ;
+  
+    gap: 1rem;
+    padding-top: 1rem;
+  
+    position: relative;
+}
+.letra1{
+    width:2.5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: 700;
+    
+    background-color: rgba(239, 242, 248);
+    border-radius: 0.5rem; 
+}
+.letra1:nth-child(1){
+    
+    grid-area: letra14;
+    position: absolute;
+    top: 0;
+    
+}
+.letra1:nth-child(2){
+    
+    grid-area: letra15;
+    
+  
+}
+.letra1:nth-child(3){
+    
+    grid-area: letra16;
+    
+ 
+}
+.letra1:nth-child(4){
+    
+    grid-area: letra17;
+    opacity: 0.5;
+   
+}
+.letra1:nth-child(5){
+    
+    grid-area: letra18;
+    
+  
+}
+.letra1:nth-child(6){
+    
+    grid-area: letra19;
+    
+}
+.letra1:nth-child(7){
+    
+    grid-area: letra20;
+    
+}
+.letra1:nth-child(8){
+    
+    grid-area: letra21;
+    
+}
+.letra1:nth-child(9){
+    
+    grid-area: letra22;
+    opacity: 0.5;
+    
+}
+.letra1:nth-child(10){
+    
+    grid-area: letra23;
+    
+}
+.letra1:nth-child(11){
+    
+    grid-area: letra24;
+}
+.letra1:nth-child(12){
+    
+    grid-area: letra25;
+}
+.letra1:nth-child(13){
+    
+    grid-area: letra26;
+}
+.letra1:nth-child(14){
+    
+    grid-area: letra27;
+    opacity: 0.5;
+}
+.letra1:nth-child(15){
+    
+    grid-area: letra28;
+    opacity: 0.5;
+}
+.letra1:nth-child(16){
+    
+    grid-area: letra29;
+}
+.letra1:nth-child(17){
+    
+    grid-area: letra30;
+}
+.letra1:nth-child(18){
+    
+    grid-area: letra31;
+}
+.letra1:nth-child(19){
+    
+    grid-area: letra32;
+}
+.letra1:nth-child(20){
+    
+    grid-area: letra33;
+}
+.letra1:nth-child(21){
+    
+    grid-area: letra34;
+    opacity: 0.5;
+}
+.letra1:nth-child(22){
+    
+    grid-area: letra35;
+}
+.letra1:nth-child(23){
+    
+    grid-area: letra36;
+}
+.letra1:nth-child(24){
+    
+    grid-area: letra37;
+}
+.letra1:nth-child(25){
+    
+    grid-area: letra38;
+}
+.letra1:nth-child(26){
+    
+    grid-area: letra39;
+}
