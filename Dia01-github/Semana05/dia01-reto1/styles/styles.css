@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+
+    /*CUSTOM PROPERTIES - VARIABLES*/
+    /*FONTS*/
+
+    --font-primary: "Hanken Grotesk", sans-serif;
+    --font-size: 18px;
+    
+    --font--weight-medium: 500;
+    --font--weight-bold: 700;
+    --font--weight-extra-bold: 800;
+
+    /*NEUTRALS*/
+    --primary-Light-red: 0, 100%, 67%;
+    --primary-Orangey-yellow: 39, 100%, 56%;
+    --primary-Green-teal: 166, 100%, 37%;
+    --primary-Cobalt-blue: 234, 85%, 45%;
+
+    --Gradient-Light-slate-blue-bg: hsl(252, 100%, 67%);
+    --Gradient-Light-royal-blue-bg: hsl(241, 81%, 54%);
+
+    --Gradient-Violet-blue-circle: hsla(256, 72%, 46%, 1);
+    --Gradient-Persian-blue-circle: hsla(241, 72%, 46%, 0);
+
+    --neutral-White: hsl(0, 0%, 100%);
+    --neutral-Pale-blue: hsl(221, 100%, 96%);
+    --neutral-Light-lavender: hsl(241, 100%, 89%);
+    --neutral-Dark-gray-blue: hsl(224, 30%, 27%);
+
+}
+
+/*GENERALES*/
+
+*{
+    box-sizing: border-box; /*suma todos los padding de las cajas, boby, etc., los recalcula automaticamente*/
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: var(--font-size);
+}
+
+body{
+    font-family: var(--font-primary);
+    background-color: var(--neutral-Pale-blue);
+
+    height: 100vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+@media(width >= 768px){
+    body{
+        align-items: center;
+       
+    }
+}
+
+.summary{ /*CONTENEDOR PRINCIPAL*/
+    background-color: var(--neutral-White);
+    display: flex;
+    flex-direction: column;
+    
+}
+@media(width >= 768px){
+    .summary{
+        flex-direction:row;
+       
+    }
+}
+
+.result{
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0 0 1rem 1rem;
+    background: linear-gradient(0deg, 
+    var(--Gradient-Light-royal-blue-bg) 0%,
+    var(--Gradient-Light-slate-blue-bg) 100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+@media(width >= 768px){
+    .result{
+        border-radius: 1.5rem;
+        
+    }
+
+}
+.result__subtitle{
+    font-size: 1.2rem;
+    font-weight: var(--font--weight-bold);
+    color: var(--neutral-Light-lavender);
+
+}
+
+.result__stats{
+    
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    
+   
+    background: linear-gradient(0deg, 
+    var(--Gradient-Persian-blue-circle) 0%,
+    var(--Gradient-Violet-blue-circle) 100%);
+
+}
+
+.result__stats h1{
+    font-size: 3.5rem;
+    font-weight: var(--font--weight-extra-bold);
+    color: var(--neutral-White);
+       
+}
+
+.result__stats small{
+    font-size: 0.9rem;
+    font-weight: var(--font--weight-extra-bold);
+    color: var(--neutral-Light-lavender);
+    text-align: center;
+}
+
+.result__title{
+    font-size: 1.8rem;
+    color: var(--neutral-White);
+}
+
+.result__text{
+    font-size: 1rem;
+    font-weight: var(--font--weight-medium);
+    padding: 0 1rem;
+    color: var(--neutral-Light-lavender);
+    text-align: center;
+}
+
+/*SUMMARY*/
+
+@media(width >= 768px){
+    .summary{
+        border-radius: 1.5rem;
+    }
+}
+
+.summary-list{
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /*justify-content: space-around;*/
+}
+
+.summary-list__title{
+    color: var(--neutral-Dark-gray-blue);
+    
+    
+}
+.summary-row--wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.summary-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+
+    font-size: 1rem;
+    font-weight: var(--font--weight-bold);
+}
+
+.summary-row__title{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+}
+.summary-row__stats{
+    color: var(--neutral-Dark-gray-blue);
+}
+.summary-row__stats span:nth-last-child(1){
+    color: var(--neutral-Light-lavender);
+}
+
+.summary-row--reaction{
+color: var(--primary-Light-red);
+background-color: hsl(0, 100%, 67%, 0.2);
+}
+
+.summary-row--reaction .summary-row__title{
+    color: hsla(var(--primary-Light-red));
+    }
+
+.summary-row--memory{
+    background-color: hsla(var(--primary-Orangey-yellow), 0.2);
+}
+
+.summary-row--memory .summary-row__title{
+    color: hsla(var(--primary-Orangey-yellow));
+}
+.summary-row--verbal{
+    background-color: hsla(var(--primary-Green-teal), .2);
+}
+.summary-row--verbal .summary-row__title{
+    color: hsla(var(--primary-Green-teal)); 
+}
+
+.summary-row--visual{
+    background-color: hsla(var(--primary-Cobalt-blue), .2);
+}
+
+.summary-row--visual .summary-row__title{
+    color: hsla(var(--primary-Cobalt-blue));
+}
+.summary__button {
+   
+    border: 0;
+ 
+    background-color: var(--neutral-Dark-gray-blue);
+    color: var(--neutral-White);
+    padding: 1rem;
+    border-radius: 1.5rem;
+  
+    font-size: 1rem;
+    font-weight: var(--font--weight-bold);
+  }
+
+
