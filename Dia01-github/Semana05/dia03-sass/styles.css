@@ -1,3 +1,24 @@
-body{
-    background-color: aqua;
+/*VARIABLE COLOR EN SASS*/
+body {
+  background-color: #FFA559;
+  color: blue;
+  text-align: center;
 }
+
+.card {
+  background-color: #e8e8e8;
+  border: 2px solid #454545;
+  border-radius: 4px;
+  text-align: left;
+  color: black;
+}
+.card__header {
+  border-bottom: 2px solid #454545;
+  padding: 1rem 1.5rem;
+}
+.card__body {
+  padding: 2rem 1.5rem;
+}
+.card--success {
+  background-color: green;
+}/*# sourceMappingURL=styles.css.map */
