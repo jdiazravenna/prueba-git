@@ -389,3 +389,16 @@ function esMayorOMenorDeEdadConRetorno(edad) {
 
 // Retornar true si un numero es primo si no devolver false
 // pista, un numero primo es divisible entre el mismo y entre 1
+
+function EsPrimo(primo){
+    for (var i = 2; i < primo; i++){
+        if (primo % i ===0){
+            return false;
+        }
+    } return numero !== 1;
+}
+
+console.log(EsPrimo(2))
+console.log(EsPrimo(3))
+console.log(EsPrimo(20))
+console.log(EsPrimo(11))
