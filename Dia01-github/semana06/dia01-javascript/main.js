@@ -41,3 +41,34 @@ console.log(typeof apellido)
 
 //Symbol (ayudan a crear valores unicos e irrepetibles)
 
+// variables y constantes
+
+// ECMASCRIPT 5 === ES5
+// ECMASCRIPT 6 === ES6
+
+// var -> ES5 (forma de declarar una variable, pero no es recomendado
+// su declaracion es a nivel de la funcion)
+
+// const -> ES6 (el uso de const es recomendado, para datos q no van a cambiar)
+
+const edad = 36 // es obligatorio iniciarlo
+// edad = 90 // Uncaught TypeError: Assignment to constant variable.
+const _edad = 20
+const edadDeMiHijoMayor = 12
+const PI = 3.1416
+const EMPRESA = 'JDR'
+const esMayorDeEdad = false
+
+// let --> ES6 (el uso de let, es lo recomendado, para datos que si van a cambiar en el transcurso de uso del programa)
+
+let edad2 = 35 // no es obligatorio inicializar
+
+edad2 = 39 //reasignamos un valor numérico
+console.log(typeof edad2)
+edad2 = "Juan"
+console.log(typeof edad2)
+
+console.log(15 + '9') // cuando ve un + y encuentra una cadena de texto, concatena todo
+
+// operadores matemáticos
+
