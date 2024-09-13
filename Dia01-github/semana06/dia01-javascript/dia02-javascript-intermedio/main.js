@@ -187,3 +187,91 @@ console.log(miObjeto.coloresfavoritos[2])
 console.log(miObjeto.cursos)
 console.log(miObjeto.cursos[1])
 console.log(miObjeto.cursos[1].nota)
+
+// Eliminar propiedades de un objeto
+
+console.log(miObjeto)
+delete miObjeto.colorfavorito // Elimina color favorito del arreglo
+delete miObjeto.cursos
+
+// Insertar una nueva propiedad a un objeto
+
+miObjeto.platillofavorito = 'Lomo Saltado'
+console.log(miObjeto)
+miObjeto['Juegos favoritos'] = ['Crash team racing', 'mario kart', 'PES 2022']
+
+console.log(miObjeto)
+
+// Destructuring arreglos y objetos
+
+// es una forma de extraer elementos/propiedades de un objeto o un arreglo en nuevas variables
+
+// En objetos 😁 windows + .
+
+const nombreValue = miObjeto.nombre
+const apellidoValue = miObjeto.apellido
+const colorFavoritoValue = miObjeto.colorFavorito
+
+console.log(nombreValue, apellidoValue, colorFavoritoValue)
+
+const { nombre, apellido, colorFavorito } = miObjeto
+
+console.log(nombre, apellido, colorFavorito)
+
+const {
+  nombre: nombreConUnAlias,
+  apellido: apellidoConUnAlias,
+  cursos: cursosValor
+} = miObjeto
+
+console.log(nombreConUnAlias, apellidoConUnAlias, cursosValor)
+
+// DESTRUCTURING: ARRAYS
+
+const amigos = ['leo', 'marcial', 'diego', 'yesica', 'victor']
+
+const [amigo1, amigo2, amigo3, , amigo4] = amigos
+
+console.log(amigo1, amigo2, amigo3, amigo4)
+
+const [a1, a2, ...mejoresAmigos] = amigos
+
+console.log(a1, a2, mejoresAmigos)
+
+// SPREAD OPERATOR (operador ...)
+
+// Extraer las propiedades de un objeto/arreglo para reutilizarlo en otros objetos/arreglos
+
+const producto = {
+  nombre: 'Laptop',
+  precio: 4890,
+  categoria: 'tech'
+}
+
+const cliente = {
+  nombre: 'Alessandro',
+  isVip: true
+}
+
+console.log(producto + cliente) // ❌ 💔 [object Object][object Object]
+
+const nuevoObjeto = { ...producto, ...cliente } // ⛔ Cuidado
+
+console.log(nuevoObjeto)
+
+// SPREAD OPERATOR, evitando colisiones de propiedades
+
+const nuevoObjetoSinColisiones = {
+  product: { ...producto },
+  cliente: { ...cliente }
+}
+
+console.log(nuevoObjetoSinColisiones)
+console.log(nuevoObjetoSinColisiones.product.nombre) // Laptop
+console.log(nuevoObjetoSinColisiones.cliente.nombre) // Alessandro
+
+// OTROS MÉTODOS DE OBJETOS
+
+console.log(Object.keys(producto)) // Obtenemos solo las claves (keys) del objeto dentro de un arreglo de cadenas.
+console.log(Object.values(producto)) // Obtenemos solo los values (values) del objeto dentro de un arreglo de cadenas.
+console.log(Object.entries(producto)) // Convertimos un objeto en un arreglo
