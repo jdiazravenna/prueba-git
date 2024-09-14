@@ -1,52 +1,55 @@
-// Contar ovejas donde el color sea rojo y el nombre contenga las letras a y n, 
-//incluye mayusculas y minusculas, y no importa los espacios
+// Javascript Ejercicios
+// Reto01 - Contando ovejas para dormir
+/*
+Considera una lista/array de ovejas. Cada oveja tiene un nombre y un color. Haz una función que devuelva una lista con todas las ovejas que sean de color rojo y que además su nombre contenga tanto las letras n Y a, sin importar el orden, las mayúsculas o espacios.
+*/
 
 const ovejas = [
-    { name: 'Noa', color: 'azul' },
-    { name: 'Euge', color: 'rojo' },
-    { name: 'Navidad', color: 'rojo' },
-    { name: 'Ki Na Ma', color: 'rojo'},
-    { name: 'AAAAAaaaaa', color: 'rojo' },
-    { name: 'Nnnnnnnn', color: 'rojo'}
-  ];
+  { name: 'Noa', color: 'azul' },
+  { name: 'Euge', color: 'rojo' },
+  { name: 'Navidad', color: 'rojo' },
+  { name: 'Ki Na Ma', color: 'rojo'},
+  { name: 'AAAAAaaaaa', color: 'rojo' },
+  { name: 'Nnnnnnnn', color: 'rojo'}
+]
 
-  function contarOvejas(ovejas) {
-    countsheep = ovejas.filter(oveja => {
-      let isRed = oveja.color === 'rojo'
-      let isA = oveja.name.toLowerCase().indexOf('a') >= 0
-      let isN = oveja.name.toLowerCase().indexOf('n') >= 0
-            return (isA && isN && isRed)
-    }) 
-    return countsheep;
-  }
-  console.log(contarOvejas(ovejas))
-
-
-// Te ha llegado una carta ✉️ con todos los regalos que debes preparar. El tema es que es una cadena de texto 
-// y es muy difícil de leer 😱. ¡Menos mal que han puesto cada regalo separado por espacio! (aunque ten cuidado, 
-// porque al ser niños, igual han colado más espacios de la cuenta)
-// Encima nos hemos dado cuenta que algunas palabras vienen con un _ delante de la palabra, por ejemplo _playstation, 
-// que significa que está tachado y no se tiene que contar.
-//Transforma el texto a un objeto que contenga el nombre de cada regalo y las veces que aparece.
-  
-const carta = 'bici coche balón _playstation bici  coche   peluche';
-
-function listadeRegalos(letter) {
-  const listaCarta = letter.split(" ");
-  return listaCarta.filter((regalo) => {
-    let value = regalo.startsWith("_")
-    if (value !== true && regalo !=="") return regalo !== value
+function contarOvejas(ovejas) {
+  return ovejas.filter(function(oveja) {
+    const nameLowered = oveja.name.toLowerCase()
+    
+    const isRedColor = oveja.color === 'rojo'
+    const hasLetterN = nameLowered.includes('n')
+    const hasLetterA = nameLowered.includes('a')
+    
+    return isRedColor && hasLetterN && hasLetterA
   })
-  .reduce((contador, regalo) => {
-    contador[regalo] = (contador[regalo] || 0) + 1;
-    return contador
-  }, {});
 }
 
-const regalos = listadeRegalos(carta)
-console.log(regalos)
+const ovejasFiltradas = contarOvejas(ovejas)
 
-// Tenemos que crear una función que recibe el número de céntimos que hay que devolver al cliente y la función nos da un array con la combinación de monedas mínimas que debemos usar para conseguirlo.
+console.log(ovejasFiltradas)
+
+// Respuesta deseada:
+
+// [{ name: 'Navidad', color: 'rojo' },
+//  { name: 'Ki Na Ma', color: 'rojo' }]
+//Reto10 - La máquina de cambio
+/*
+Para mejorar la productividad de la tienda en la que trabajamos, vamos a crear una pequeña máquina que 
+"calcula el mínimo número de monedas que debemos usar para dar el cambio de una compra"
+en metálico.
+
+Las monedas para cambio que puedes usar son estas:
+
+coins[0] = 1 céntimo
+coins[1] = 2 céntimos
+coins[2] = 5 céntimos
+coins[3] = 10 céntimos
+coins[4] = 20 céntimos
+coins[5] = 50 céntimos
+
+Tenemos que crear una función que recibe el número de céntimos que hay que devolver al cliente y la función nos da un array con la combinación de monedas mínimas que debemos usar para conseguirlo.
+*/
 
 function getCoins(change) {
   const coins = [1, 2, 5, 10, 20, 50]
@@ -66,19 +69,17 @@ function getCoins(change) {
     })
   .reverse()
 }
-console.log(getCoins(51))
-console.log(getCoins(3))
-console.log(getCoins(5))
-console.log(getCoins(16))
-console.log(getCoins(100))
 
-// [1, 0, 0, 0, 0, 1] -> una moneda de 1 céntimo y otra de 50 céntimos
- // [1, 1, 0, 0, 0, 0] -> una moneda de 1 céntimo y otra de 2
- // [0, 0, 1, 0, 0, 0] -> una moneda de 5 céntimos
-// [1, 0, 1, 1, 0, 0] -> una moneda de 1 céntimo, una de 5 y una de 10
- // [0, 0, 0, 0, 0, 2] -> dos monedas de 50 céntimos
+getCoins(51) // [1, 0, 0, 0, 0, 1] -> una moneda de 1 céntimo y otra de 50 céntimos
+getCoins(3) // [1, 1, 0, 0, 0, 0] -> una moneda de 1 céntimo y otra de 2
+getCoins(5) // [0, 0, 1, 0, 0, 0] -> una moneda de 5 céntimos
+getCoins(16) // [1, 0, 1, 1, 0, 0] -> una moneda de 1 céntimo, una de 5 y una de 10
+getCoins(100) // [0, 0, 0, 0, 0, 2] -> dos monedas de 50 céntimos
 
- /*
+
+// https://adventjs.dev/ (2021)
+// Reto1 (2023) - Primer regalo repetido
+/*
 En la fábrica de juguetes del Polo Norte, cada juguete tiene un número de identificación único.
 
 Sin embargo, debido a un error en la máquina de juguetes, algunos números han sido asignados a más de un juguete.
@@ -133,3 +134,134 @@ console.log(firstRepeatedId2) // -1
 const giftIds3 = [5, 1, 5, 1]
 const firstRepeatedId3 = findFirstRepeated(giftIds3)
 console.log(firstRepeatedId3) // 5
+
+// Reto2 (2023) - Ponemos en marcha la fábrica
+/*
+En el taller de Papá Noel, los elfos tienen una lista de regalos que desean hacer y un conjunto limitado de materiales.
+
+Los regalos son cadenas de texto y los materiales son caracteres . Tu tarea es escribir una función que, dada una lista de regalos y los materiales disponibles, devuelva una lista de los regalos que se pueden hacer .
+*/
+
+// Método EVERY, devuelve un boolean si todos los elementos del array cumplen una condición
+/*
+[1, 2, 3, 4, 5].every(numero => numero > 0);
+
+[1, 2, 3, 4, 6, -5].some(numero => numero % 2 === 0);
+*/
+function manufacture(gifts, materials) {
+  return gifts.filter(function (gift) {
+    const copyGift = [...gift]
+
+    return copyGift.every(function (giftLetter) {
+      return materials.includes(giftLetter)
+    })
+  })
+}
+const gifts1 = ['tren', 'oso', 'pelota']
+const materials1 = 'tronesa'
+
+manufacture(gifts1, materials1) // ["tren", "oso"]
+
+const gifts2 = ['juego', 'puzzle']
+const materials2 = 'jlepuz'
+
+manufacture(gifts2, materials2) // ["puzzle"]
+
+const gifts3 = ['libro', 'ps5']
+const materials3 = 'psli'
+
+manufacture(gifts3, materials3) // []
+//Reto3 (2023) - El duende travieso
+/*
+En el taller de Papá Noel, un elfo travieso ha estado jugando con la línea de producción de regalos, añadiendo o quitando un paso no planificado.
+
+Tiene la secuencia original de pasos de fabricación originales y la secuencia modificada que puede incluir un paso adicional o faltarle un paso.
+
+Su tarea consiste en escribir una función que identifique y devuelva el primer paso adicional que se agregó o eliminó en la cadena de fabricación . Si no hay diferencia entre las secuencias, devuelva una cadena vacía.
+*/
+
+function findNaughtyStep(original, modified) {
+  let cadena1, cadena2;
+  let cadena3='';
+  if (original.length>modified.length){
+      cadena1=original;
+      cadena2=modified;
+  } else {
+      cadena1=modified;
+      cadena2=original;
+  }
+  for(let i=0;i<cadena1.length;i++){
+      if(cadena2.includes(cadena1[i])==false) {
+          cadena3+=cadena1[i];
+      }
+  }
+  return cadena3;
+}
+
+const original1 = 'abcd'
+const modified1 = 'abcde'
+findNaughtyStep(original1, modified1) // 'e'
+
+const original2 = 'stepfor'
+const modified2 = 'stepor'
+findNaughtyStep(original2, modified2) // 'f'
+
+const original3 = 'abcde'
+const modified3 = 'abcde'
+findNaughtyStep(original3, modified3) // ''
+
+/*
+Por favor, tenga en cuenta:
+
+* Siempre habrá un paso diferente o ninguno.
+* La modificación puede ocurrir en cualquier parte de la cadena.
+* Los pasos originales podrían estar vacíos
+*/
+
+/*
+El Grinch está abriendo las cartas que iban a Santa Claus y las está dejando hechas un lío. 😱
+
+Las cartas son una cadena de texto que incluyen regalos y paréntesis ().
+
+Para saber si una carta es válida ✅, debes comprobar que los paréntesis cierran correctamente y que, además, no vayan vacíos.
+
+¡Pero ojo! Porque el Grinch ha dejado llaves { y corchetes [ dentro de los paréntesis que hacen que no sean válidas. Por suerte sólo los ha dejado en medio de los paréntesis...
+
+Ejemplos:
+
+
+"bici coche (balón) bici coche peluche" // -> ✅
+"(muñeca) consola bici" // ✅
+
+"bici coche (balón bici coche" // -> ❌
+"peluche (bici [coche) bici coche balón" // -> ❌
+"(peluche {) bici" // -> ❌
+"() bici" // ❌
+
+
+Crea una función que pasándole el texto de la carta, devuelva true si es válida y false si no lo es. ¡Y acaba con la travesura del Grinch!
+*/
+
+function isValid(letter) {
+  const hasChar = (word, char) => word.includes(char)
+  const gifts = letter.match(/\([^)]*\)/g)
+  
+  if (!gifts) return false
+  
+  const invalidGifts = gifts.filter(gift => {
+    const criteriaA = hasChar(gift, '{')
+    const criteriaB = hasChar(gift, '[')
+    const criteriaC = hasChar(gift, '()')
+    return criteriaA || criteriaB || criteriaC
+  })
+    
+  return invalidGifts.length === 0
+}
+
+isValid("bici coche (balón) bici coche peluche") // -> ✅
+isValid("(muñeca) consola bici") // ✅
+
+isValid("bici coche (balón bici coche") // -> ❌
+isValid("peluche (bici [coche) bici coche balón") // -> ❌
+isValid("(peluche {) bici") // -> ❌
+isValid("() bici") // ❌
