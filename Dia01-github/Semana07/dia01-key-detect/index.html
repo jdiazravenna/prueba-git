@@ -11,12 +11,31 @@
   <main class="mx-auto border-4 w-80 bg-yellow-300 p-5 rounded-lg flex flex-col items-center
     gap-5"> <!--Margenes automaticos, borde suave, ancho de 80, fondo amarillo, padding 5, centrado, centrado en columna, aliineado, espacioado 5-->
     <h1 class="text2xl">JS Key detected</h1>
-    <section class="bg-red-400 w-16 h-16 rounded-full flex justify-center items-center
-    ">00</section>
-    <section class="bg-red-300 w-16 h-16 flex justify-center items-center
+    <section id="keycode" class="bg-red-400 w-16 h-16 rounded-full flex justify-center items-center
+    text-4xl text-white">00</section>
+    <section id="character" class="bg-red-300 w-16 h-16 flex justify-center items-center
     text-4xl text-white">A</section>
-
+ 
   </main>
+  <script>
+    const keyCode = document.querySelector('#keycode')/*llamamos al id keycode*/
+    const character = document.querySelector('#character')
+
+    console.log({keyCode: keyCode})/*imprime keyCode*/
+    /*console.log({keyCode, Character}) se puede usar ambos en una sola linea, 
+    y si el ID es igual a la constante, se puede escribir solo una*/
+    console.log({Character: character})
+
+    /*document.addEventListener(nombre_evento, funcion)*/
+    document.addEventListener('keydown', function(event){
+        //console.log(event)
+        console.log(event.keyCode) // codigo ASCII
+        console.log(event.key) // letra
+
+        keyCode.textContent = event.keyCode
+        character.textContent = event.key
+    })
+  </script>
   
 </body>
 </html>
