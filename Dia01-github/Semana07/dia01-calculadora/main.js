@@ -18,7 +18,7 @@ buttons.forEach(function(button){
     //console.log(buttonText)
 
     // Añadiremos la logica de la calculadora
-        if ('+-*'.includes(buttonText)){
+        if ('+-*/√%'.includes(buttonText)){
             //console.log('Presionaste el operador', buttonText)
             //asignamos el operador actual
             operador = buttonText
@@ -34,6 +34,10 @@ buttons.forEach(function(button){
                 numeroActual = Number(operando) - Number(numeroActual)
             }else if (operador === '*'){
                 numeroActual = Number(operando) * Number(numeroActual)
+            }else if (operador === '/'){
+                numeroActual = Number(operando) / Number(numeroActual)
+            }else if (operador === '%'){
+                numeroActual = Number(operando)*Number(numeroActual)
             }
 
         }else if (buttonText === 'AC'){
