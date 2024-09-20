@@ -40,6 +40,19 @@ taskAdd.addEventListener('click', function(event){
     li.appendChild(button)
         
     taskInput.value = ''
+})
 
+taskList.addEventListener('click', function(event){
+    //console.log('click tasklist')
+    const target = event.target // declaramos target
     
+    console.log({target})
+
+    if (target.tagName === 'BUTTON'){ //tag name siempre esta en mayusculas
+        target.parentElement.remove() //elimina la linea LI 
+    }
+    if (target.tagName === 'INPUT' && target.type === 'checkbox'){
+        //target.parentElement.style = 'color: red';
+        console.log(target.classList.toggle('checked')) // le añade la clase checked (toggle)
+    }
 })
