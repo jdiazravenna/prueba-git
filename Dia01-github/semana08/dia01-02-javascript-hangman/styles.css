@@ -22,6 +22,7 @@
   .hangman__maskedword {
     text-align: center;
     font-size: 3rem;
+    margin-top: 1rem;
   }
   
   .hangman__buttons {
