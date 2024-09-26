@@ -2,12 +2,14 @@ const elparrafo = document.querySelector('.Parrafos')
 const elpalabras = document.querySelector('.Palabras')
 const elletras = document.querySelector('.Letras')
 let eltext = document.querySelector('.texto')
+
 let cant_letras = 0
 let cant_palabras = 0
 let cant_parrafos = 0
 let keyCode = ''
 let keyCodeold = ' '
-document.addEventListener('keyup', function(event) {
+
+document.addEventListener('keydown', function(event) {
 
     keyCode = event.keyCode
     //console.log(keyCode)
@@ -21,6 +23,7 @@ document.addEventListener('keyup', function(event) {
     let cant_parrafos = 0
     let keyCode = ''
     let keyCodeold = ' '
+
     elpalabras.textContent=0
     elparrafo.textContent=0
     elletras.textContent=0
