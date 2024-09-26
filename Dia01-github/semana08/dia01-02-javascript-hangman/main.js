@@ -15,11 +15,11 @@ const selectLetter = (letter) => {
   tries++
   console.log(tries)
   // console.log('seleccionando letra', letter)
-  if (word.includes(letter)) {
+  
     correctGuesses = correctGuesses + letter
     
     renderMaskedWord()
-  }
+  
 }
 
 const renderMaskedWord = () => {
@@ -38,7 +38,7 @@ const renderMaskedWord = () => {
     console.log('YOU WON!')
     elResult.classList.toggle('hidden')
     elResult.textContent = 'YOU WON!'
-  } else if (tries > 10) {
+  } else if (tries >= 10) {
     console.log('YOU LOST!')
     elResult.classList.toggle('hidden')
     elResult.textContent = 'YOU LOST!'
