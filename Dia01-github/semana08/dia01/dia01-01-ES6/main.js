@@ -74,7 +74,7 @@ function nombreDeLaFuncion() { // Estamos declarando la función
   console.log(miSuma(...numeros))
   
   const listaDeNumeros = [6, 33, 998, 1, -66, 453]
-  
+ 
   console.log(
     Math.max(25, 8, 65),
     Math.max(...listaDeNumeros)
@@ -83,6 +83,7 @@ function nombreDeLaFuncion() { // Estamos declarando la función
   console.log(
     Math.min(25, 8, 65),
     Math.min(...listaDeNumeros)
+    
   )
   
   
