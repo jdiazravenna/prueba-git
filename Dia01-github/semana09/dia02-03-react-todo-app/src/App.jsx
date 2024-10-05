@@ -73,7 +73,7 @@ const App = () => {
  
   const completedTodos = todos.filter(todo => todo.completed).length
 
-  const handleRemoveTodos = (event) => {
+  const handleRemoveToDos = (event) => {
     const id = event.target.dataset.id
 
     const updatedTodos = todos.filter(todo => todo.completed !== true)
@@ -106,7 +106,7 @@ const App = () => {
         </span>
         <button
           className="bg-blue-500 text-white rounded-lg px-2 py-1 hover:bg-blue-700 duration-300"
-          onClick={handleRemoveTodos}
+          onClick={handleRemoveToDos}
         >
           Limpiar completadas
         </button>
