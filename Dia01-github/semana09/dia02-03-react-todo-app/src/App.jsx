@@ -1,7 +1,9 @@
 import { useState } from "react"
 
-import TodoHeader from "./components/TodoHeader"
+import TodoHeader from "./components/ToDoHeader"
 import TodoForm from "./components/ToDoForm"
+import TodoStats from "./components/ToDoStats"
+import TodoList from "./components/ToDoList"
 
 const App = () => {
   const DEFAULT_TODOS = [
@@ -56,17 +58,11 @@ const App = () => {
     setTodos(updatedTodos)
   }
 
-  const completedTodos = todos.filter(todo => todo.completed).length
-
   // TODO: RETO2 - Completar la funcionalidad del botón Limpiar completadas
-  const handleRemoveToDos = (event) => {
-    const id = event.target.dataset.id
-
-
-    const updatedTodos = todos.filter(todo => todo.completed !== true)
-
-
-    setTodos(updatedTodos)
+  const handleClearTodos = (event) => {
+    const imcompletedTodos = todos.filter(todo => !todo.completed)
+    
+    setTodos(imcompletedTodos)
   }
 
   return (
@@ -81,49 +77,30 @@ const App = () => {
 
       {/* DONE: RETO1 - Añadir una estadística de cuantas tareas estan completadas y el total de tareas */}
 
-      <section className="flex justify-between items-center">
-        <span className="font-bold">
-          {completedTodos} de {todos.length}
-        </span>
-        <button
-          className="bg-blue-500 text-white rounded-lg px-2 py-1 hover:bg-blue-700 duration-300"
-          onClick={handleRemoveToDos}
-        >
-          Limpiar completadas
-        </button>
-      </section>
+       {/* Renderizado condicional */}
 
-      <section className="mt-4">
-        <ul className="flex flex-col gap-2">
-          {todos.map(todo => {
-            return (
-              <li className="flex" key={todo.id}>
-                <input
-                  className="mr-2"
-                  type="checkbox"
-                  data-id={todo.id}
-                  onChange={handleCompleted}
-                  checked={todo.completed}
-                />
-                <div className="w-full flex justify-between items-center">
-                  <span
-                    className={`font-medium ${todo.completed ? 'line-through' : '' }`}
-                  >
-                    {todo.title}
-                  </span>
-                  <button
-                    className="bg-red-300 rounded-lg px-1 py-1"
-                    data-id={todo.id}
-                    onClick={handleRemoveTodo}
-                  >
-                    ❌
-                  </button>
-                </div>
-              </li>
-            )
-          })}
+       {
+        todos.length > 0
+        ? (
+          <TodoStats
+            todos={todos}
+            onClearTodos={handleClearTodos}
+          />
+        )
+        : (
+          <div className="text-center font-medium text-gray-500">
+            Agrega más tareas en la parte superior.
+          </div>
+        )
 
-        </ul>
+      }
+
+        <section className="mt-4">
+        <TodoList
+          todos={todos}
+          onCompleted={handleCompleted}
+          onRemoveTodo={handleRemoveTodo}
+        />
       </section>
 
       <pre>{JSON.stringify(todos, null, 2)}</pre>
