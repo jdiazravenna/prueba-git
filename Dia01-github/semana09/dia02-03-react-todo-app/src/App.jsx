@@ -1,5 +1,8 @@
 import { useState } from "react"
 
+import TodoHeader from "./components/TodoHeader"
+import TodoForm from "./components/ToDoForm"
+
 const App = () => {
   const DEFAULT_TODOS = [
     {
@@ -20,27 +23,9 @@ const App = () => {
   ]
 
   const [todos, setTodos] = useState(DEFAULT_TODOS)
-  const [input, setInput] = useState('')
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    console.log('Añadiendo una nueva tarea...')
-
-    const newTodo = {
-      id: crypto.randomUUID(),
-      title: input,
-      completed: false
-    }
-
+  const handleSubmit = (newTodo) => {
     setTodos([...todos, newTodo])
-
-    setInput('')
-  }
-
-  const handleChange = (event) => {
-    // Vamos a capturar lo que escribimos en la caja de texto
-    setInput(event.target.value)
   }
 
   const handleRemoveTodo = (event) => {
@@ -70,13 +55,16 @@ const App = () => {
 
     setTodos(updatedTodos)
   }
- 
+
   const completedTodos = todos.filter(todo => todo.completed).length
 
+  // TODO: RETO2 - Completar la funcionalidad del botón Limpiar completadas
   const handleRemoveToDos = (event) => {
     const id = event.target.dataset.id
 
+
     const updatedTodos = todos.filter(todo => todo.completed !== true)
+
 
     setTodos(updatedTodos)
   }
@@ -85,20 +73,13 @@ const App = () => {
     <main
       className="bg-yellow-100 w-full max-w-sm mx-auto mt-10 border border-yellow-400 rounded-lg shadow-lg p-4"
     >
-      <h1 className="text-2xl font-bold text-center">TODO APP</h1>
+      <TodoHeader title="TODO APP + React" />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          className="w-full border my-3 p-2 rounded-lg"
-          type="text"
-          placeholder="¿Qué deseas hacer hoy?"
-          required
-          onChange={handleChange}
-          value={input}
-        />
-      </form>
+      <TodoForm onSubmit={handleSubmit} />
 
       {/* {input} */}
+
+      {/* DONE: RETO1 - Añadir una estadística de cuantas tareas estan completadas y el total de tareas */}
 
       <section className="flex justify-between items-center">
         <span className="font-bold">
