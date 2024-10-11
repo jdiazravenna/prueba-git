@@ -1,27 +1,27 @@
 import Avatar from "boring-avatars";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchStudents } from "./services/students";
 
 const App = () => {
-  const DEFAULT_STUDENTS = [
-    // {
-    //   id: "1",
-    //   name: "Bulma",
-    //   city: 'Chiclayo'
-    // },
-    // {
-    //   id: "2",
-    //   name: "Goku",
-    //   city: 'Trujillo'
-    // },
-    // {
-    //   id: "3",
-    //   name: "Vegeta",
-    //   city: 'Lima'
-    // }
-  ]
+  // const DEFAULT_STUDENTS = [
+  //   {
+  //     id: "1",
+  //     name: "Bulma",
+  //     city: 'Chiclayo'
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "Goku",
+  //     city: 'Trujillo'
+  //   },
+  //   {
+  //     id: "3",
+  //     name: "Vegeta",
+  //     city: 'Lima'
+  //   }
+  // ]
 
-  const [students, setStudents] = useState(DEFAULT_STUDENTS)
+  const [students, setStudents] = useState([])
 
   const [form, setForm] = useState({
     id: '',
@@ -29,19 +29,16 @@ const App = () => {
     city: ''
   })
 
+  // Nos ayuda a controlar el ciclo de vida de un componente
+  // CREACIÓN, ACTUALIZACIÓN Y ELMINACIÓN DEL COMPONENTE
   useEffect(() => {
-    const fetchStudents  = async () => {
-      const url ='https://67074c70a0e04071d229b91d.mockapi.io/students'
-
-      const response = await fetch(url)
-      return await response.json()
-    }
-    fetchStudents()
-    .then(dataStudents => {
-      setStudents(dataStudents)
-    })
-  }, []) // se ejecuta useeffect al cargar el componente la primera vez
-  
+    console.log('useEffect')
+    
+    fetchStudents() // Promise -> .then
+      .then(dataStudents => {
+        setStudents(dataStudents)
+      })
+  }, []) // Se ejecuta el useEffect al cargar el componente la primera vez
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -50,12 +47,16 @@ const App = () => {
 
     if (isNew) {
       const newStudent = {
-        id: crypto.randomUUID(),
+        // id: crypto.randomUUID(),
         name: form.name,
         city: form.city
       }
-      
-      setStudents([ ...students, newStudent ])
+
+
+
+      // const updatedStudents = [ ...students, newStudent ]
+      // setStudents(updatedStudents)
+      // localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
     } else {
       // Update student
       const updatedStudents = students.map(student => {
@@ -63,7 +64,6 @@ const App = () => {
           return {
             ...student,
             name: form.name,
-            
             city: form.city
           }
         }
@@ -72,10 +72,12 @@ const App = () => {
       })
 
       setStudents(updatedStudents)
+
+      localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
     }
 
     setForm({
-      id: null,
+      id: '',
       name: '',
       city: ''
     })
@@ -90,9 +92,11 @@ const App = () => {
   const handleRemove = (id) => {
     console.log('Deleting student...', id)
 
-    const filteredStudents = students.filter(student => student.id !== id)
+    const updatedStudents = students.filter(student => student.id !== id)
 
-    setStudents(filteredStudents)
+    setStudents(updatedStudents)
+
+    localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
   }
 
   const handleUpdate = (id) => {
@@ -119,7 +123,7 @@ const App = () => {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
             type="text"
             name="name"
-            placeholder="Ex. Juan"
+            placeholder="Ex. Victor Villazón"
             onChange={handleChange}
             value={form.name}
           />
@@ -162,7 +166,6 @@ const App = () => {
             <div key={student.id} className="student__row flex justify-between items-center gap-2 bg-slate-50 p-2 rounded-lg border">
               <Avatar name={student.name} variant="beam" size={48}/>
               <div className="text-left">{student.name}</div>
-              <div className="text-left">{student.Lastname}</div>
               <div className="text-left">{student.city}</div>
               <div className="flex gap-2">
                 <button onClick={() => handleUpdate(student.id)}>✏</button>

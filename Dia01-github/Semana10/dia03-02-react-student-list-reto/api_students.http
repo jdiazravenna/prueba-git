@@ -1,0 +1,12 @@
+### Listar Peliculas
+
+GET https://67074c70a0e04071d229b91d.mockapi.io/students
+
+### CREAR ESTUDIANTE
+POST https://67074c70a0e04071d229b91d.mockapi.io/students
+content-type : application/json
+
+{
+    "name": "Juan",
+    "city": "Huacho"
+}

@@ -81,7 +81,7 @@ const App = () => {
     }
 
     setForm({
-      id: null,
+      id:'',
       name: '',
       Lastname: '',
       email: '',
@@ -91,7 +91,7 @@ const App = () => {
   }
 
   // const handleCheck = (event) => {
-  //   const inputPassword = document.getElementById(".password")
+  //   const inputPassword = document.getElementById("password")
   //   const labelShow = document.getElementById("label-show")
 
   //   inputPassword.type = event.checked ? "text" : "password"
