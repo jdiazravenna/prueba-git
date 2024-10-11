@@ -127,7 +127,7 @@ const App = () => {
 
         const dataStudents = await fetchStudents()
 
-    setStudents(dataStudents)
+        setStudents(dataStudents)
       }
     }); 
 
