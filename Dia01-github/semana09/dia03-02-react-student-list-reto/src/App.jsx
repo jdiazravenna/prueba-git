@@ -31,6 +31,9 @@ const App = () => {
   const [form, setForm] = useState({
     id: '',
     name: '',
+    Lastname: '',
+    email: '',
+    password: '',
     city: ''
   })
 
@@ -43,6 +46,9 @@ const App = () => {
       const newStudent = {
         id: crypto.randomUUID(),
         name: form.name,
+        Lastname: form.Lastname,
+        email: form.email,
+        password: form.password,
         city: form.city
       }
 
@@ -58,6 +64,9 @@ const App = () => {
           return {
             ...student,
             name: form.name,
+            Lastname: form.Lastname,
+            email: form.email,
+            password: form.password,
             city: form.city
           }
         }
@@ -68,14 +77,27 @@ const App = () => {
       setStudents(updatedStudents)
 
       localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
+      
     }
 
     setForm({
       id: null,
       name: '',
+      Lastname: '',
+      email: '',
+      password: '',
       city: ''
     })
   }
+
+  // const handleCheck = (event) => {
+  //   const inputPassword = document.getElementById(".password")
+  //   const labelShow = document.getElementById("label-show")
+
+  //   inputPassword.type = event.checked ? "text" : "password"
+  //   labelShow.textContent = event.checked ? "Ocultar Contraseña" : "Mostrar Contraseña"
+
+  // }
 
   const handleChange = (event) => {
     const { name, value } = event.target // Lo que se escribe en la caja de texto
@@ -117,11 +139,57 @@ const App = () => {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
             type="text"
             name="name"
-            placeholder="Ex. Victor Villazón"
+            placeholder="Ex. Juan"
             onChange={handleChange}
             value={form.name}
+            required
           />
         </label>
+
+        <label className="flex flex-col gap-2">
+          <span className="text-sm font-medium text-gray-900">Lastname</span>
+          <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
+            type="text"
+            name="Lastname"
+            placeholder="Ex. Díaz"
+            onChange={handleChange}
+            value={form.Lastname}
+            required
+          />
+        </label>
+
+        <label className="flex flex-col gap-2">
+          <span className="text-sm font-medium text-gray-900">Email</span>
+          <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
+            type="email"
+            name="email"
+            placeholder="Ex. tunombre@tudominio.com"
+            onChange={handleChange}
+            value={form.email}
+            required
+          />
+        </label>
+
+        <label className="flex flex-col gap-2">
+          <span className="text-sm font-medium text-gray-900">Password</span>
+          <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
+            type="password"
+            name="password"
+            placeholder="******"
+            onChange={handleChange}
+            value={form.password}
+            required
+            // id="password"
+          />
+          {/* <div className="flex gap-2 mx-auto">
+          <input className="flex" type="checkbox" id="showPass" onChange={handleCheck}/>
+          <label className="flex justify-between" for="showPass" id="label-show">Mostrar Contraseña</label>
+          </div> */}
+        </label>
+        
 
         <label className="flex flex-col gap-2">
           <span className="text-sm font-medium text-gray-900">City</span>
@@ -132,6 +200,7 @@ const App = () => {
             placeholder="Ex. Chiclayo"
             onChange={handleChange}
             value={form.city}
+            required
           />
         </label>
 
@@ -148,7 +217,7 @@ const App = () => {
           />
         </div>
 
-        <pre>{JSON.stringify(form)}</pre>
+        {/* <pre>{JSON.stringify(form)}</pre> */}
       </form>
 
       <div className="student__list mt-3 flex flex-col gap-2">
@@ -158,8 +227,11 @@ const App = () => {
         {students.map(student => {
           return (
             <div key={student.id} className="student__row flex justify-between items-center gap-2 bg-slate-50 p-2 rounded-lg border">
-              <Avatar name={student.name} variant="beam" size={48}/>
+              <Avatar name={student.name} variant="beam" size={32}/>
               <div className="text-left">{student.name}</div>
+              <div className="text-left">{student.Lastname}</div>
+              <div className="text-left">{student.email}</div>
+              {/* <div className="text-left">{student.passWord}</div> */}
               <div className="text-left">{student.city}</div>
               <div className="flex gap-2">
                 <button onClick={() => handleUpdate(student.id)}>✏</button>
