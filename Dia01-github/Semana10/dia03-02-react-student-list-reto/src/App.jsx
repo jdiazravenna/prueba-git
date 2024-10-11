@@ -1,6 +1,9 @@
 import Avatar from "boring-avatars";
 import { useState, useEffect } from "react";
-import { fetchStudents } from "./services/students";
+import { createStudent, fetchStudents, removeStudent, updateStudent } from "./services/students";
+import Swal from 'sweetalert2'
+
+
 
 const App = () => {
   // const DEFAULT_STUDENTS = [
@@ -40,7 +43,7 @@ const App = () => {
       })
   }, []) // Se ejecuta el useEffect al cargar el componente la primera vez
 
-  const handleSave = (event) => {
+  const handleSave = async (event) => {
     event.preventDefault();
 
     const isNew = form.id === ''
@@ -52,28 +55,43 @@ const App = () => {
         city: form.city
       }
 
+      const res = await createStudent(newStudent)
 
+      console.log(res)
+
+      const dataStudents = await fetchStudents()
+
+      setStudents(dataStudents)
 
       // const updatedStudents = [ ...students, newStudent ]
       // setStudents(updatedStudents)
       // localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
     } else {
       // Update student
-      const updatedStudents = students.map(student => {
-        if (student.id === form.id) {
-          return {
-            ...student,
-            name: form.name,
-            city: form.city
-          }
-        }
 
-        return student
-      })
+      const res = await updateStudent(form)
 
-      setStudents(updatedStudents)
+      console.log(res)
 
-      localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
+      const dataStudents = await fetchStudents()
+
+      setStudents(dataStudents)
+
+      // const updatedStudents = students.map(student => {
+      //   if (student.id === form.id) {
+      //     return {
+      //       ...student,
+      //       name: form.name,
+      //       city: form.city
+      //     }
+      //   }
+
+      //   return student
+      // })
+
+      // setStudents(updatedStudents)
+
+      // localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
     }
 
     setForm({
@@ -92,11 +110,35 @@ const App = () => {
   const handleRemove = (id) => {
     console.log('Deleting student...', id)
 
-    const updatedStudents = students.filter(student => student.id !== id)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => { // aqui colocamos el async porq esta en otra funcion
+      // cuando el usuario presiona el boton YES
+      if (result.isConfirmed) {
+        const res = await removeStudent(id)
 
-    setStudents(updatedStudents)
+        console.log(res)
 
-    localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
+        const dataStudents = await fetchStudents()
+
+    setStudents(dataStudents)
+      }
+    }); 
+
+    // TODO: enviar una petición para eliinar un estudiante
+   
+
+    // const updatedStudents = students.filter(student => student.id !== id)
+
+    // setStudents(updatedStudents)
+
+    // localStorage.setItem('STUDENTS', JSON.stringify(updatedStudents))
   }
 
   const handleUpdate = (id) => {

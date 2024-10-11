@@ -7,6 +7,25 @@ POST https://67074c70a0e04071d229b91d.mockapi.io/students
 content-type : application/json
 
 {
-    "name": "Juan",
-    "city": "Huacho"
+    "name": "Carlos",
+    "city": "Huánuco"
+}
+
+### ACTUALIZAR LOS DATOS DE UN ESTUDIANTE
+PUT https://67074c70a0e04071d229b91d.mockapi.io/students/[id]
+content-type : application/json
+
+{
+   "name": "Bulma Test",
+    "city": "Chiclayo Test" 
+}
+
+### REMOVER LOS DATOS DE UN ESTUDIANTE
+
+DELETE https://67074c70a0e04071d229b91d.mockapi.io/students/[id]
+content-type : application/json
+
+{
+    "name": "Chichi",
+    "city": "Napa Valley"
 }
