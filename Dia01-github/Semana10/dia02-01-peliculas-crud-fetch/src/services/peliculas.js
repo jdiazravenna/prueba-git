@@ -33,7 +33,7 @@ export const updatePelicula = async (data) => {
         },
         body: JSON.stringify({
             nombre: data.nombre, 
-            Imagen: data.Imagen,
+            imagen: data.Imagen,
             estreno: data.estreno,
             genero: data.generoId,
             resumen: data.resumen

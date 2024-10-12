@@ -6,6 +6,7 @@ import {
   removePelicula,
   updatePelicula,
 } from "./services/peliculas";
+
 const App = () => {
   const [peliculas, setPeliculas] = useState([]);
   const [form, setForm] = useState({
@@ -20,7 +21,7 @@ const App = () => {
     console.log("useEffect");
 
     fetchPeliculas() // promesa
-      .then((dataPeliculas) => {
+      .then(dataPeliculas => {
         setPeliculas(dataPeliculas);
       });
   }, []);
@@ -32,20 +33,23 @@ const App = () => {
 
     if (isNew) {
       const newPelicula = {
-        // id: crypto.randomUUID(),
+        
         nombre: form.nombre,
         imagen: form.imagen,
         estreno: form.estreno,
         generoId: form.generoId,
-        resumen: form.resumen,
+        resumen: form.resumen
       };
       const res = await createPelicula(newPelicula);
       console.log(res);
 
       const dataPeliculas = await fetchPeliculas();
+
       setPeliculas(dataPeliculas);
+
     } else {
       const res = await updatePelicula(form);
+      
       console.log(res);
 
       const dataPeliculas = await fetchPeliculas();
@@ -63,8 +67,9 @@ const App = () => {
   };
 
   const handleChange = (event) => {
-    const { nombre, value } = event.target;
-    setForm({ ...form, [nombre]: value });
+    const { name, value} = event.target
+    setForm({ ...form, [name]: value})
+     
   };
   const handleRemove = (id) => {
     console.log("Eliminando película...", id);
@@ -93,7 +98,7 @@ const App = () => {
   };
 
   const handleUpdate = (id) => {
-    const peliculaFound = peliculas.find((pelicula) => {
+    const peliculaFound = peliculas.find(pelicula => {
       return pelicula.id === id;
     });
     console.log(peliculaFound);
@@ -101,7 +106,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <main>
       <nav className="flex">
         <ul>
           <li>
@@ -153,38 +158,46 @@ const App = () => {
               </tbody>
             </table>
           </div>
-          <div>
-            <form className="flex-col" onSubmit={handleSave}>
+          
+            <form 
+            className="flex-col" 
+            onSubmit={handleSave}>
               <h2>Nueva película</h2>
-
+            <label>
               <input
                 type="text"
                 name="nombre"
                 placeholder="Mi pelicula"
                 onChange={handleChange}
-                value={form.nombre}
+                //value={form.nombre}
               />
+            </label>
 
+            <label>
               <input
                 type="text"
                 name="imagen"
                 placeholder="https://..."
                 onChange={handleChange}
-                value={form.imagen}
+                //value={form.imagen}
               />
+            </label>
 
+            <label>
               <input
                 type="date"
                 name="estreno"
                 placeholder="estreno"
                 onChange={handleChange}
-                value={form.estreno}
+                //value={form.estreno}
               />
+            </label>
 
+            <label>
               <select
                 name="generoId"
                 onChange={handleChange}
-                value={form.generoId}
+                //value={form.generoId}
               >
                 <option value="">Selecciona un genero...</option>
                 <option value="1">Comedia</option>
@@ -192,21 +205,24 @@ const App = () => {
                 <option value="3">Animación</option>
                 <option value="4">Aventura</option>
               </select>
+              </label>
+
+              <label>
               <textarea
                 name="resumen"
                 type="text"
                 placeholder="Resumen de mi película"
                 onChange={handleChange}
-                value={form.resumen}
+                //value={form.resumen}
               ></textarea>
-
+              </label>
               <pre>{JSON.stringify(form)}</pre>
               <input type="submit" value="Guardar" />
             </form>
-          </div>
+          
         </div>
       </section>
-    </>
+    </main>
   );
 };
 
