@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 
 import { getCharacter } from '../services/characters'
 
 const CharacterPage = () => {
   const { id } = useParams()
+
+  const navigate = useNavigate()
 
   const [character, setCharacter] = useState()
 
@@ -13,6 +15,12 @@ const CharacterPage = () => {
       .then(result => setCharacter(result))
   }, [])
 
+  const handleBackHome = () => {
+    console.log('handleBackHome clicked')
+    navigate('/')
+        
+  }
+
   return (
     <>
       <h1 className='font-bold text-3xl text-center'>
@@ -20,6 +28,12 @@ const CharacterPage = () => {
       </h1>
 
       <section className='flex justify-center flex-col items-center mt-6 text-center gap-4'>
+        <button
+          onClick={handleBackHome}
+          className='bg-blue-900 text-white px-3 py-2'
+        >Back home</button>
+
+
         <Link to='/' className='font-bold text-blue-700 hover:underline'>Back home</Link>
         <img src={character?.image} width={200} />
         <h2 className='text-4xl mb-2'>{character?.race}</h2>
@@ -32,4 +46,4 @@ const CharacterPage = () => {
   )
 }
 
-export default CharacterPage
+export default CharacterPage  
