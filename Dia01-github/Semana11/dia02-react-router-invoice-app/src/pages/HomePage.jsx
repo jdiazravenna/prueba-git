@@ -33,11 +33,11 @@ const fetchProducts = async () => {
 // OAUTH2 -> Github, Google, etc
 
 const HomePage = () => {
-  const [products, setProducts] = useState([])
+  const [products, setProduts] = useState([])
 
   useEffect(() => {
     fetchProducts()
-      .then(data => setProducts(data.products))
+      .then(data => setProduts(data.products))
   }, [])
 
   return (
@@ -46,8 +46,6 @@ const HomePage = () => {
 
       {products.map(product => {
         return <h3 key={product.id}>{product.title}</h3>
-        
-        
       })}
     </section>
   )

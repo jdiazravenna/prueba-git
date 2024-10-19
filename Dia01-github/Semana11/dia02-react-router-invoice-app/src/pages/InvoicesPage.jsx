@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+// TODO: Consultar los datos de mockapi y listar los invoices en el navegador
+// https://67074c39a0e04071d229b837.mockapi.io/api/v1/invoices
+
+import { useEffect, useState } from "react"
+
+import Header from "../components/Header"
+import InvoiceList from "../components/invoice-page/InvoiceList"
 
 const fetchInvoices = async () => {
+  const url = 'https://67074c39a0e04071d229b837.mockapi.io/api/v1/invoices'
 
-  const url = "https://67074c70a0e04071d229b91d.mockapi.io/invoices"
-  
   const response = await fetch(url)
 
   return await response.json()
@@ -14,15 +19,19 @@ const InvoicesPage = () => {
 
   useEffect(() => {
     fetchInvoices()
-    .then(invoices => setInvoices(invoices))
+      .then(invoices => setInvoices(invoices))
   }, [])
+
   return (
-    <section>
-      <h1>Listado de invoices</h1>
-      {invoices.map(invoices => {
-        return <div>{JSON.stringify(invoices)}</div>
-      })}
-    </section>
+    <>
+      <Header title='Invoices' />
+
+      {/* TODO: Implementar el compoennte invoice list con una propiedad invoices */}
+
+      <InvoiceList invoices={invoices} />
+
+      {/* <div>{JSON.stringify(invoices)}</div> */}
+    </>
   )
 }
 

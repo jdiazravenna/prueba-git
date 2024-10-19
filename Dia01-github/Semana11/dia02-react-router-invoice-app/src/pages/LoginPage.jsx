@@ -35,7 +35,7 @@ const LoginPage = () => {
       localStorage.setItem('auth', JSON.stringify(res)) // accessToken
       navigate('/home')
     } else {
-      // Mostrar alerta cuando el suaurio no se logueo correctamente
+      // Mostrar alerta cuando el usuario no se logueo correctamente
     }
   }
 
