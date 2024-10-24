@@ -4,6 +4,8 @@ import { removePelicula } from "../services/peliculas";
 import { fetchPeliculas } from "../services/peliculas";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { toast } from "sonner";
+
 
 const HomePage = () => {
   const [peliculas, setPeliculas] = useState([])
@@ -24,7 +26,7 @@ const HomePage = () => {
     console.log("Eliminando película...", id)
 
     Swal.fire({
-      title: "Are you sure?",
+      title: `Are you sure? Delete Movie ${id}`,
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -35,13 +37,18 @@ const HomePage = () => {
       // aqui colocamos el async porq esta en otra funcion
       // cuando el usuario presiona el boton YES
       if (result.isConfirmed) {
+        // // eliminarPelicula(id)
+        // // .then(() => {
+        // //   fetchPeliculas()
+        // //   .then(data => setPeliculas(data))
+        // })
         const res = await removePelicula(id)
-
-        console.log(res)
-
+     
         const dataPeliculas = await fetchPeliculas()
 
         setPeliculas(dataPeliculas)
+
+        toast.success(`Se ha eliminado correctamente la Pelicula ${id}`)
       }
     })
   }

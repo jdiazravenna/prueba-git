@@ -43,7 +43,7 @@ export const editarPelicula = async (form, id) => {
 }
 
 export const removePelicula = async (id) => {
-  const url = `https://67074c39a0e04071d229b837.mockapi.io/api/v1/peliculas/${id}`
+  const url = `${BASE_URL}peliculas/${id}`
 
   const options = {
       method: 'DELETE'

@@ -5,10 +5,12 @@ import HomePage from './pages/HomePage'
 import NuevaPeliculaPage from './pages/NuevaPeliculaPage'
 import EditarPeliculaPage from './pages/EditarPeliculaPage'
 import VerPeliculaPage from './pages/VerPeliculaPage'
+import { Toaster } from 'sonner'
 
 const App = () => {
   return (
     <BrowserRouter>
+    <Toaster richColors  />  {/*Aqui colocamos el Toaster, la parte mas externa del App */}
       <Routes>
         <Route path='/' element={<BaseLayout />}>
           {/* DONE: RUTA PARA LISTAR UNA PELICULA */}
