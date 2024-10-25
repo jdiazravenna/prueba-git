@@ -1,0 +1,40 @@
+### Listar Peliculas
+
+GET https://67074c70a0e04071d229b91d.mockapi.io/peliculas
+
+### CREAR PELICULA
+POST https://67074c70a0e04071d229b91d.mockapi.io/peliculas
+content-type : application/json
+
+{
+    "nombre": "Titanic",
+    "imagen": "barco.jpg",
+    "estreno": "10/10/2024",
+    "generoId": "Acción",
+    "resumen": "Se hunde el barco"
+}
+
+### ACTUALIZAR LOS DATOS DE UN PELICULA
+PUT https://67074c70a0e04071d229b91d.mockapi.io/peliculas/[id]
+content-type : application/json
+
+{
+    "nombre": "",
+    "imagen": "",
+    "estreno": "",
+    "generoId": "",
+    "resumen": ""
+}
+
+### REMOVER LOS DATOS DE UN PELICULA
+
+DELETE https://67074c70a0e04071d229b91d.mockapi.io/peliculas/[id]
+content-type : application/json
+
+{
+    "nombre": "The Super Mario Bros. Movie",
+    "imagen": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+    "estreno": "2023-04-05",
+    "generoId": "3",
+    "resumen": "Resumen de prueba",
+}
