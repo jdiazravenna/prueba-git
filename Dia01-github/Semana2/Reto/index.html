@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario</title>
+
+</head>
+<link rel="stylesheet" href="./css/style.css">
+<body>
+  <main class="contact-form">
+  
+    <h1>Contact Us</h1>
+    <form>
+      <div class="row">
+<label>
+  First Name<span class="required"> *</span>
+    <input type="text" name="nombres" required placeholder="Escriba su nombre"/>
+  
+</label>
+<label>
+  Last Name<span class="required"> *</span>
+  <input type="text" name="apellidos" required placeholder="Escriba su apellido"/>
+</label>
+</div>
+
+
+<label>
+  Email Address<span class="required"> *</span>
+  <input type="email" name="email" required placeholder="Please enter a valid email address"/>
+    
+</label>
+
+<label>
+  Query Type<span class="required"> *</span>
+  <div class="row">
+    <div class="query-type">
+    <input type="radio" />
+  General Enquiry
+</div>
+
+<div class="query-type">
+  <input type="radio" />
+  Support Request
+</div>
+</div>
+</label>
+ <label>
+
+  Message<span class="required"> *</span>
+  <textarea rows="5"></textarea>
+</label>
+
+<label class="flex">
+  <input type="checkbox" name="checkbox" required>
+  I consent to being contacted by the team
+
+</label>
+
+  <input class="boton" type="submit" value="Submit">
+  
+
+</form>
+</main>
+</body>
+</html>
