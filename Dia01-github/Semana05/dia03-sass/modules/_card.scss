@@ -1,0 +1,22 @@
+.card{
+    background-color: $card-gb;
+    border: 2px solid $card-border-color;
+    border-radius: $card-border-radius;
+    text-align: left;
+    color: $card-text;
+@include default-border;
+@include custom-border(3px, red, false);
+
+    &__header{ //ANIDAMOS//
+        border-bottom: 2px solid $card-border-color;
+        padding: 1rem 1.5rem;
+        
+    }
+    &__body{
+        padding: 2rem 1.5rem;
+    }
+    &--success{
+        background-color: #ddeeaa;
+    }
+       
+}

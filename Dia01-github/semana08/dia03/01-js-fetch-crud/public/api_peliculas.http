@@ -1,0 +1,20 @@
+### Listar Peliculas
+
+GET http://localhost:3000/peliculas
+
+### Crear Peliculas
+
+POST http://localhost:3000/peliculas
+Content-Type: application/json
+
+{
+    "nombre": "El Aro",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDokeUV_QMfHbKxGLYTkAQrL3G9y4FGc10LA&s",
+    "estreno": "2024/10/02",
+    "generoId": 1,
+    "resumen": "Resumen de mi película"
+}
+
+### Eliminar Pelicula
+
+DELETE http://localhost:3000/peliculas/7c6d
