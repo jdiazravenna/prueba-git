@@ -6,5 +6,8 @@
         {
             "path": "C:/Users/JDiaz/Documents/Backend G21"
         }
-    ]
+    ],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "Backend G21"
+    }
 }
